@@ -7,7 +7,7 @@ Repository Template
 // npm install --save-dev csv-loader xml-loader
 
 // Jest Testing 
-// npm instal --save-dev jest
+// npm install --save-dev jest
 // Set up a jest.config.js file:
 // module.exports = {
 //   testEnvironment: "node", // or "jsdom" for browser-like environment
@@ -17,7 +17,7 @@ Repository Template
 // };
 
 // Babel (Jest Configuration)
-// npm install --save-dev @babel/core @babel/present-env
+// npm install --save-dev @babel/core @babel/preset-env
 // npm install --save-dev babel-jest
 // Set up a babel.config.js file:
 // module.exports = {
