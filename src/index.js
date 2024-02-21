@@ -34,8 +34,8 @@ export class GameBoard {
     );
   }
 
-  placeShip (ship, x, y, orientation) {
-    if (orientation === 'horizontal') {
+  placeShip (ship, x, y, horizontal) {
+    if (horizontal) {
       for (let i = 0; i < ship.length; i++) {
         this.grid[x + i] = ship;
       }
@@ -44,6 +44,18 @@ export class GameBoard {
         this.grid[x][y + i] = ship;
       }
     }
-    this.ships.push({ ship, x, y, orientation });
+    this.ships.push({ ship, x, y, horizontal });
+  }
+
+  receiveAttack () {
+    if (this.grid[x][y] !== null) {
+      this.grid[x][y].hit();
+    } else {
+      this.missedAttacks.push( { x, y} );
+    }
+  }
+
+  allShipsSunk() {
+    return this.ships.every(shipObj => shipObj.ship.isSunk());
   }
 }
