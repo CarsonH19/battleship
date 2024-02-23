@@ -48,8 +48,51 @@ table {
 	border-spacing: 0;
 }
 
+.content {
+	display: flex;
+}
 
-/* Responsive */
+.game-window {
+	display: none;  
+}
+
+.left-side, 
+.right-side {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+}
+
+.blank {
+	background-color: whitesmoke;
+}
+
+.computer-cell.blank:hover {
+	background-color: crimson;
+}
+
+.ship {
+	background-color: blue;
+}
+
+.hit {
+	background-color: red;
+	pointer-events: none; /* don't allow player to select same cell twice*/
+}
+
+.miss {
+	background-color: darkgrey;
+	pointer-events: none; /* don't allow player to select same cell twice*/
+}
+
+
+/* Responsive Sizes */
 /* Example: Mobile-first approach */
 /* Media query for small devices */
 @media (min-width: 576px) {
