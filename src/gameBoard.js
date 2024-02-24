@@ -84,6 +84,9 @@ export class GameBoard {
       }
     } else {
       for (let i = 0; i < ship.length; i++) {
+        console.log(ship);
+        console.log(this.grid);
+        console.log(`${x + i}, ${y}`);
         this.grid[x + i][y] = ship;
       }
     }

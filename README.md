@@ -1,4 +1,4 @@
-Repository Template
+Battleship 
 
 // Webpack
 // npm install webpack webpack-cli --save-dev
