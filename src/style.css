@@ -97,15 +97,22 @@ html, body {
 	gap: 100px;
 }
 
-.left-side, 
-.right-side {
-
+.left-side {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
 }
 
 .cell {
   width: 40px;
   height: 40px;
   border: 1px solid black;
+}
+
+.player-cell.blank.highlight {
+  background-color: #4400ff;
 }
 
 .blank {

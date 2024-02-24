@@ -1,4 +1,5 @@
 import { Ship } from "./ship";
+import { isValid } from "./index";
 
 export class GameBoard {
   constructor(gridSize = 10) {
@@ -78,19 +79,29 @@ export class GameBoard {
   }
 
   placeShip(ship, x, y, horizontal) {
-    if (horizontal) {
-      for (let i = 0; i < ship.length; i++) {
-        this.grid[x][y + i] = ship;
+    console.log(ship);
+    console.log(x);
+    console.log(y);
+    console.log(horizontal);
+
+    if (isValid(ship, x, y, horizontal)) {
+      if (horizontal) {
+        for (let i = 0; i < ship.length; i++) {
+          this.grid[x][y + i] = ship;
+        }
+      } else {
+        for (let i = 0; i < ship.length; i++) {
+          console.log(ship);
+          console.log(this.grid);
+          console.log(`${x + i}, ${y}`);
+          this.grid[x + i][y] = ship;
+        }
       }
+      this.ships.push({ ship, x, y, horizontal });
+      console.log('Ship Placed!');
     } else {
-      for (let i = 0; i < ship.length; i++) {
-        console.log(ship);
-        console.log(this.grid);
-        console.log(`${x + i}, ${y}`);
-        this.grid[x + i][y] = ship;
-      }
+      alert("Please choose a valid location!");
     }
-    this.ships.push({ ship, x, y, horizontal });
   }
 
   receiveAttack(x, y) {
