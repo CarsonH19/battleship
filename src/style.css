@@ -48,24 +48,63 @@ table {
 	border-spacing: 0;
 }
 
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
 .content {
+	height: 100%;
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 50px;
+}
+
+.content h1 {
+	font-size: 7rem;
+}
+
+.content button {
+	height: 50px;
+	width: 150px;
+	font-size: 1rem;
 }
 
 .game-window {
+	height: 100%;
+	width: 100%;
 	display: none;  
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 50px;
+	margin-top: -50px;
+}
+
+.text-box {
+	height: 100px;
+	width: 920px;
+	border: 2px rgb(0, 0, 0) solid;
+	font-size: 2rem;
+}
+
+.boards-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 100px;
 }
 
 .left-side, 
 .right-side {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+
 }
 
 .cell {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border: 1px solid black;
 }
 
@@ -91,25 +130,3 @@ table {
 	pointer-events: none; /* don't allow player to select same cell twice*/
 }
 
-
-/* Responsive Sizes */
-/* Example: Mobile-first approach */
-/* Media query for small devices */
-@media (min-width: 576px) {
-  /* Styles for small devices (e.g., smartphones) */
-}
-
-/* Media query for medium devices */
-@media (min-width: 768px) {
-  /* Styles for medium devices (e.g., tablets) */
-}
-
-/* Media query for large devices */
-@media (min-width: 992px) {
-  /* Styles for large devices (e.g., desktops) */
-}
-
-/* Media query for extra-large devices */
-@media (min-width: 1200px) {
-  /* Styles for extra-large devices (e.g., large desktops) */
-}
