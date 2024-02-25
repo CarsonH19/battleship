@@ -4,7 +4,7 @@ import { playerGameBoard } from "./index";
 export function isValid(ship, x, y, isHorizontal, board = playerGameBoard) {
   // Check if ship goes out of the board's grid
   if (isHorizontal) {
-    if (y + ship.length - 1 > 10 || x >= 10) {
+    if (y + ship.length - 1 >= 10 || x >= 10) {
       return false;
     }
     for (let i = y; i < y + ship.length - 1; i++) {
@@ -13,7 +13,7 @@ export function isValid(ship, x, y, isHorizontal, board = playerGameBoard) {
       }
     }
   } else {
-    if (x + ship.length - 1 > 10 || y >= 10) {
+    if (x + ship.length - 1 >= 10 || y >= 10) {
       return false;
     }
     for (let i = x; i < x + ship.length - 1; i++) {

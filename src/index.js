@@ -37,18 +37,18 @@ const computerSubmarine2 = new Ship(3);
 const computerDestroyer1 = new Ship(2);
 const computerDestroyer2 = new Ship(2);
 
+// place computer ships
+placeComputerShips(computerCarrier);
+placeComputerShips(computerBattleship);
+placeComputerShips(computerCruiser);
+placeComputerShips(computerSubmarine1);
+placeComputerShips(computerSubmarine2);
+placeComputerShips(computerDestroyer1);
+placeComputerShips(computerDestroyer2);
+
 export async function gameLoop() {
   let gameOver = false;
   playerGameBoard.renderGameBoard("player-gameboard");
-
-  // place computer ships
-  placeComputerShips(computerCarrier);
-  placeComputerShips(computerBattleship);
-  placeComputerShips(computerCruiser);
-  placeComputerShips(computerSubmarine1);
-  placeComputerShips(computerSubmarine2);
-  placeComputerShips(computerDestroyer1);
-  placeComputerShips(computerDestroyer2);
 
   // player places ships
   while (playerShips.length > 0) {
@@ -94,13 +94,9 @@ export async function gameLoop() {
     }
   }
 
-  function gameOver() {
+  // function gameOver() {}
 
-  }
-  
-  function displayGameResult() {
-
-  }
+  // function displayGameResult() {}
 
   function delay(ms) {
     // Function to introduce delay using Promise
