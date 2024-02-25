@@ -37,14 +37,14 @@ function placePlayerShips(ship) {
       // Highlight cells based on ship's length and orientation
       if (isHorizontal) {
         for (let i = 0; i < ship.length; i++) {
-          const cell = document.getElementById(`${x + i}-${y}`);
+          const cell = document.getElementById(`${x}-${y + i}`);
           if (cell) {
             cell.classList.add("highlight");
           }
         }
       } else {
         for (let i = 0; i < ship.length; i++) {
-          const cell = document.getElementById(`${x}-${y + i}`);
+          const cell = document.getElementById(`${x + i}-${y}`);
           if (cell) {
             cell.classList.add("highlight");
           }
@@ -114,8 +114,6 @@ placeComputerShips(computerSubmarine2);
 placeComputerShips(computerDestroyer1);
 placeComputerShips(computerDestroyer2);
 
-console.log(computerGameBoard.grid);
-
 // Randomly places computer ships
 function placeComputerShips(ship) {
   const x = Math.floor(Math.random() * 10);
@@ -123,32 +121,31 @@ function placeComputerShips(ship) {
   const randomBoolean = Math.random() < 0.5;
   let isHorizontal = randomBoolean;
 
-  if (isValid(ship, x, y, isHorizontal)) {
+  if (isValid(ship, x, y, isHorizontal, computerGameBoard)) {
     computerGameBoard.placeShip(ship, x, y, isHorizontal);
-    console.log(`${x}, ${y}`);
   } else {
     placeComputerShips(ship);
   }
 }
 
 // Check if ship fits on board and does not overlap
-export function isValid(ship, x, y, isHorizontal) {
+export function isValid(ship, x, y, isHorizontal, board = playerGameBoard) {
   // Check if ship goes out of the board's grid
   if (isHorizontal) {
-    if (y + ship.length > 10 || x >= 10) {
+    if (y + ship.length - 1 > 9 || x >= 9) {
       return false;
     }
     for (let i = y; i < y + ship.length - 1; i++) {
-      if (computerGameBoard.grid[x][i] !== null) {
+      if (board.grid[x][i] !== null) {
         return false;
       }
     }
   } else {
-    if (x + ship.length > 10 || y >= 10) {
+    if (x + ship.length - 1 > 9 || y >= 9) {
       return false;
     }
     for (let i = x; i < x + ship.length - 1; i++) {
-      if (computerGameBoard.grid[i][y] !== null) {
+      if (board.grid[i][y] !== null) {
         return false;
       }
     }
@@ -182,8 +179,7 @@ async function gameLoop() {
   // Player places ships
   while (playerShips.length > 0) {
     await placePlayerShips(playerShips[0]);
-    if (playerGameBoard.ships.includes(playerShips[0])) {
-      console.log(playerGameBoard.ships);
+    if (playerGameBoard.ships[0].ship === playerShips[0]) {
       playerShips.shift();
     }
     playerGameBoard.renderGameBoard("player-gameboard");
@@ -196,7 +192,6 @@ async function gameLoop() {
   // Game loop
   while (!gameOver) {
     // Player's turn
-    console.log("Player, choose a cell");
     await playerTurn(computerGameBoard);
     computerGameBoard.renderGameBoard("computer-gameboard");
 
@@ -213,7 +208,6 @@ async function gameLoop() {
     // Computer's turn
     computerTurn(playerGameBoard);
     playerGameBoard.renderGameBoard("player-gameboard");
-    console.log("Computer attacks!");
 
     // Check if computer's move resulted in game over
     if (playerGameBoard.allShipsSunk()) {

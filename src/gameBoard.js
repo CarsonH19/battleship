@@ -79,26 +79,23 @@ export class GameBoard {
   }
 
   placeShip(ship, x, y, horizontal) {
-    console.log(ship);
-    console.log(x);
-    console.log(y);
-    console.log(horizontal);
-
     if (isValid(ship, x, y, horizontal)) {
       if (horizontal) {
         for (let i = 0; i < ship.length; i++) {
+          console.log(`Vertical: ${x}, ${y + i}`);
           this.grid[x][y + i] = ship;
         }
       } else {
         for (let i = 0; i < ship.length; i++) {
-          console.log(ship);
-          console.log(this.grid);
-          console.log(`${x + i}, ${y}`);
+          console.log(`Horizontal: ${x + i}, ${y}`);
           this.grid[x + i][y] = ship;
         }
       }
-      this.ships.push({ ship, x, y, horizontal });
+      this.ships.unshift({ ship, x, y, horizontal });
       console.log('Ship Placed!');
+      console.log(this.grid);
+      console.log(this.ships);
+
     } else {
       alert("Please choose a valid location!");
     }
