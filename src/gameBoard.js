@@ -1,5 +1,5 @@
 import { Ship } from "./ship";
-import { isValid } from "./index";
+import { isValid } from "./isValid";
 
 export class GameBoard {
   constructor(gridSize = 10) {
