@@ -53,6 +53,13 @@ html, body {
 	width: 100%;
 }
 
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
 .content {
 	height: 90%;
 	display: flex;
@@ -73,12 +80,12 @@ html, body {
 }
 
 .game-window {
-	height: 90%;
+	height: 50%;
 	width: 100%;
 	display: none;  
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	gap: 50px;
 	margin-top: 0px;
 }
@@ -144,9 +151,6 @@ html, body {
 
 footer {
 	color: black;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;

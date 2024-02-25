@@ -10,8 +10,11 @@ import "./style.css";
 startGame();
 toggleOrientation();
 
-const textBox = document.querySelector('.text-box');
-textBox.style.display = 'none';
+const textBox = document.querySelector(".text-box");
+textBox.style.display = "none";
+
+const boardsContainer = document.querySelector(".boards-container");
+boardsContainer.style.display = "none";
 
 // Initialize player board & ships
 export const playerGameBoard = new GameBoard();
@@ -42,7 +45,7 @@ const computerSubmarine2 = new Ship("Submarine", 3);
 const computerDestroyer1 = new Ship("Destroyer", 2);
 const computerDestroyer2 = new Ship("Destroyer", 2);
 
-export let turn = 'Your'; // "Your" / "The enemy"
+export let turn = "Your"; // "Your" / "The enemy"
 
 // place computer ships
 placeComputerShips(computerCarrier);
@@ -56,8 +59,12 @@ placeComputerShips(computerDestroyer2);
 export async function gameLoop() {
   let gameOver = false;
   playerGameBoard.renderGameBoard("player-gameboard");
-  textBox.style.display = 'flex';
+  textBox.style.display = "flex";
 
+  // adjust board spacing
+  const boardsContainer = document.querySelector(".boards-container");
+  boardsContainer.style.display = "flex";
+  boardsContainer.style.justifyContent = "space-evenly";
 
   // player places ships
   displayText("Admiral, ready your ships.");
@@ -74,18 +81,13 @@ export async function gameLoop() {
   const orientationButton = document.querySelector(".orientation-btn");
   orientationButton.style.display = "none";
 
-  // adjust board spacing
-  const boardsContainer = document.querySelector('.boards-container');
-  boardsContainer.style.justifyContent = 'space-evenly';
-
   // render computer's board after player places ships
   computerGameBoard.renderGameBoard("computer-gameboard");
-
 
   // Start Game loop
   while (!gameOver) {
     // player's turn
-    turn = 'Your';
+    turn = "Your";
     displayText("Admiral, where shall you strike?");
 
     await playerTurn(computerGameBoard);
@@ -102,7 +104,7 @@ export async function gameLoop() {
     }
 
     // delay before computer's turn
-    turn = 'The enemy';
+    turn = "The enemy";
     displayText("Enemy attack incoming!");
     await delay(1500);
 
