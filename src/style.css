@@ -54,7 +54,7 @@ html, body {
 }
 
 .content {
-	height: 100%;
+	height: 90%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -73,7 +73,7 @@ html, body {
 }
 
 .game-window {
-	height: 100%;
+	height: 90%;
 	width: 100%;
 	display: none;  
 	flex-direction: column;
@@ -85,7 +85,7 @@ html, body {
 
 .text-box {
 	height: 100px;
-	width: 920px;
+	width: 90%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -94,10 +94,11 @@ html, body {
 }
 
 .boards-container {
-	width: 100%;
+	width: 90%;
 	display: flex;
-	justify-content: center;
-	gap: 100px;
+	justify-content: space-evenly;
+	gap: 0px;
+	/* border: 2px red solid; */
 }
 
 .left-side {
@@ -140,3 +141,66 @@ html, body {
 	pointer-events: none; /* don't allow player to select same cell twice*/
 }
 
+/* FOOTER */
+
+footer {
+	color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.fa-github {
+  color: black;
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+  transform: rotate(360deg) scale(1.2);
+}
+
+
+@media only screen and (max-width: 768px) {
+  /* Adjust footer styles for mobile devices */
+  footer {
+    font-size: 16px;
+  }
+
+	.game-window {
+		height: 90%;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 50px;
+	}
+
+	.text-box {
+		position: absolute;
+		top: 0;
+		margin-top: 15px;
+		height: 10%;
+		font-size: 1rem;
+	}
+
+	.boards-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+		gap:20px;
+	}
+
+	.cell {
+		height: 25px;
+		width: 25px;
+	}
+}
