@@ -96,9 +96,8 @@ html, body {
 .boards-container {
 	width: 90%;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	gap: 0px;
-	/* border: 2px red solid; */
 }
 
 .left-side {

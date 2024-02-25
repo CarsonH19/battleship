@@ -52,8 +52,6 @@ placeComputerShips(computerDestroyer2);
 export async function gameLoop() {
   let gameOver = false;
   playerGameBoard.renderGameBoard("player-gameboard");
-  // const rightSide = document.querySelector('.right-side');
-  // rightSide.style.display = none;
 
   // player places ships
   displayText("Admiral, ready your ships.");
@@ -70,9 +68,13 @@ export async function gameLoop() {
   const orientationButton = document.querySelector(".orientation-btn");
   orientationButton.style.display = "none";
 
+  // adjust board spacing
+  const boardsContainer = document.querySelector('.boards-container');
+  boardsContainer.style.justifyContent = 'space-evenly';
+
   // render computer's board after player places ships
   computerGameBoard.renderGameBoard("computer-gameboard");
-  // rightSide.style.display = 'flex';
+
 
   // Start Game loop
   while (!gameOver) {
