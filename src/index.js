@@ -4,7 +4,7 @@ import { startGame, toggleOrientation } from "./dom";
 import { computerTurn, placeComputerShips } from "./computer";
 import { playerTurn, placePlayerShips } from "./player";
 import { displayText } from "./text";
-import "./style.css"
+import "./style.css";
 
 // Initialize event listeners
 startGame();
