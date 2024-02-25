@@ -86,6 +86,9 @@ html, body {
 .text-box {
 	height: 100px;
 	width: 920px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	border: 2px rgb(0, 0, 0) solid;
 	font-size: 2rem;
 }

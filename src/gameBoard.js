@@ -1,5 +1,6 @@
 import { Ship } from "./ship";
 import { isValid } from "./isValid";
+import { displayText } from "./text";
 
 export class GameBoard {
   constructor(gridSize = 10) {
@@ -92,9 +93,7 @@ export class GameBoard {
         }
       }
       this.ships.unshift({ ship, x, y, horizontal });
-      console.log('Ship Placed!');
-      console.log(this.grid);
-      console.log(this.ships);
+      displayText(`${ship.name} placed!`);
 
     } else {
       alert("Please choose a valid location!");
@@ -104,10 +103,13 @@ export class GameBoard {
   receiveAttack(x, y) {
     const target = this.grid[x][y];
     if (target instanceof Ship) {
+      displayText(`Hit!`);
       target.hit();
       this.grid[x][y] = "HIT";
+      
     } else {
       this.missedAttacks.push({ x, y });
+      displayText(`Miss!`);
       this.grid[x][y] = "MISS";
     }
 
