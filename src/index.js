@@ -4,10 +4,14 @@ import { startGame, toggleOrientation } from "./dom";
 import { computerTurn, placeComputerShips } from "./computer";
 import { playerTurn, placePlayerShips } from "./player";
 import { displayText } from "./text";
+import "./style.css"
 
 // Initialize event listeners
 startGame();
 toggleOrientation();
+
+const textBox = document.querySelector('.text-box');
+textBox.style.display = 'none';
 
 // Initialize player board & ships
 export const playerGameBoard = new GameBoard();
@@ -52,6 +56,8 @@ placeComputerShips(computerDestroyer2);
 export async function gameLoop() {
   let gameOver = false;
   playerGameBoard.renderGameBoard("player-gameboard");
+  textBox.style.display = 'flex';
+
 
   // player places ships
   displayText("Admiral, ready your ships.");
