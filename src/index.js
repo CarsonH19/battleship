@@ -87,7 +87,7 @@ export async function gameLoop() {
   // Start Game loop
   while (!gameOver) {
     // player's turn
-    turn = "Your";
+    turn = "The enemy's";
     displayText("Admiral, where shall you strike?");
 
     await playerTurn(computerGameBoard);
@@ -104,15 +104,15 @@ export async function gameLoop() {
     }
 
     // delay before computer's turn
-    turn = "The enemy";
+    turn = "Your";
     displayText("Enemy attack incoming!");
-    await delay(1500);
+    await delay(2000);
 
     // computer's turn
     computerTurn(playerGameBoard);
     playerGameBoard.renderGameBoard("player-gameboard");
 
-    await delay(1500);
+    await delay(2000);
 
     // check if computer wins
     if (playerGameBoard.allShipsSunk()) {
